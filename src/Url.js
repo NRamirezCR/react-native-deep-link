@@ -11,6 +11,7 @@ export default class Url {
         this.scheme = urlObj.protocol;
         this.path = `/${urlObj.host}${urlObj.pathname}`;
         this.query = urlObj.query;
+        this.url = url
     }
 
     match({ expression, object }) {
@@ -19,11 +20,12 @@ export default class Url {
         if (!params) {
             return null;
         }
-
+ 
         return {
             scheme: this.scheme,
             route: expression,
             query: this.query,
+            url: this.url,
             params
         };
     }
